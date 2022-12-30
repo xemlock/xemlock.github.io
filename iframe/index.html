@@ -5,8 +5,23 @@
   <title></title>
 </head>
 <body>
-  <script>
-    document.write(`window.name = ${window.name || '<i>(empty)</i>'}`);
-  </script>
+  <div>
+    On load window.name = 
+    <script>
+        document.write(`${window.name || '<i>(empty)</i>'}`);
+    </script>
+  </div>
+  <div>
+    Current window.name = <span id="current"></span>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            function update() {
+                document.getElementById('current').innerHTML = window.name || '<i>(empty)</i>';
+            }
+            setInterval(update, 1000);
+            update();
+        });
+    </script>
+  </div>
 </body>
 </html>
